@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italiania Travel Indonesia</title>
+    <link rel="icon" href="Gambar/The Village logo.png">
+    <style>
+        :root {
+            --primary-color: #921912;
+            --secondary-color: #6B5948;
+            --cream-color: #F5E6D8;
+            --dark-color: #181719;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            min-height: 100vh;
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }    
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            height: 70px;
+            top: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--cream-color);
+            text-decoration: none;
+            margin-right: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--cream-color);
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(245, 230, 216, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: 50px;
+            width: 500px;
+        }
+
+        .search-box input {
+            padding: 10px 15px 10px 45px;
+            border: 2px solid var(--cream-color);
+            background: transparent;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            height: 40px;
+            color: var(--cream-color);
+        }
+
+        .search-box input::placeholder {
+            color: var(--cream-color);
+            opacity: 0.8;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            fill: var(--cream-color);
+        }
+
+        .tools {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .bell-icon, .arrow-icon {
+            width: 22px;
+            height: 22px;
+            fill: var(--cream-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-picture {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cream-color);
+        }
+
+        .username {
+            color: var(--cream-color);
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-top: 70px;
+            padding: 40px;
+        }
+
+        /* Home Page Styles */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            min-height: calc(100vh - 70px);
+        }
+
+        .hero-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-square {
+            width: 55%;
+            min-height: 500px;
+            background-color: var(--cream-color);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--cream-color);
+            border: none;
+            min-width: 100px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            min-width: 120px;
+        }
+
+        .hero-image {
+            width: 40%;
+            max-width: 700px;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* About Page Styles */
+        .about-container {
+            background-color: var(--cream-color);
+            border-radius: 8px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about-header h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .about-header p {
+            font-size: 18px;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-section {
+            margin-top: 60px;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .team-member {
+            width: 250px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .member-info h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .member-info p {
+            font-size: 14px;
+            color: var(--secondary-color);
+        }
+
+        /* Hover effects */
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-4px);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-4px);
+            color: var(--cream-color);
+            border-color: var(--primary-color);
+        }
+
+        .bell-icon:hover, 
+        .arrow-icon:hover,
+        .search-icon:hover,
+        .profile-picture:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Page Transition */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Scrollable Content */
+        .scrollable-content {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 15px;
+            margin: 20px 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 20px 0;
+        }
+
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        @media (max-width: 1200px) {
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .hero-text p {
+                font-size: 16px;
+            }
+            
+            .search-box {
+                width: 350px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .hero-square {
+                width: 80%;
+                margin: 0 auto;
+            }
+            
+            .hero-image {
+                width: 60%;
+                margin: 0 auto;
+            }
+            
+            .search-box {
+                width: 250px;
+                margin-left: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 15px;
+                height: 60px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .hero-square {
+                width: 100%;
+                padding: 30px;
+                min-height: auto;
+            }
+            
+            .hero-text h1 {
+                font-size: 28px;
+            }
+            
+            .hero-text p {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+            
+            .hero-image {
+                width: 80%;
+            }
+            
+            .search-box {
+                display: none;
+            }
+            
+            .username {
+                display: none;
+            }
+
+            .about-container {
+                padding: 30px;
+            }
+
+            .about-header h1 {
+                font-size: 28px;
+            }
+
+            .about-header p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .hero-image {
+                width: 100%;
+            }
+
+            .team-member {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo" onclick="showPage('home')">Italiania</a>
+        
+        <div class="nav-links">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('about')">About Us</a>
+            <a href="#">Tours</a>
+            <a href="#">Gallery</a>
+            <a href="#">Contact</a>
+        </div>
+    
+        <div class="search-box">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+            <input type="text" placeholder="Search">
+        </div>
+    
+        <div class="tools">
+            <svg class="bell-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+            </svg>
+            <img class="profile-picture" src="Gambar/Gambar orang.jpg" alt="Profile picture">
+            <span class="username">Dharma P.</span>
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5z"/>
+            </svg>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-square">
+                        <div class="hero-text">
+                            <h1>Inizia il tuo viaggio in Italia</h1>
+                            <p>Il cliente è molto importante, il cliente sarà seguito dal cliente. In effetti, il fattore di stress nell'eros è l'elemento triste. Il corso della casa, mio ​​​​che decorava il cartone, a volte non c'era dolore, quindi il vantaggio della casa era una vita libera.</p>
+                        </div>
+
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary">Start</button>
+                            <button class="btn btn-outline">Purchase</button>
+                        </div>
+                    </div>
+
+                    <img class="hero-image" src="Gambar/Italian Village.jpg" alt="Italian Village">
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us Page -->
+        <div id="about" class="page">
+            <div class="about-container">
+                <div class="about-header">
+                    <h1>About Italiania Travel</h1>
+                    <p>Discover the passion behind our Italian travel experiences and meet the team that makes it all possible.</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2010, Italiania Travel began as a small family-owned business with a deep love for Italian culture and a desire to share it with the world. What started as personalized tours for friends and family has grown into a premier travel service offering unforgettable Italian experiences.</p>
+                        
+                        <div class="scrollable-content">
+                            <p>Our journey began in the heart of Tuscany, where our founders, Marco and Sofia, hosted intimate cooking classes and wine tastings in their countryside villa. Word spread quickly about these authentic experiences, and soon requests came from travelers around the world wanting to experience the real Italy - not just the tourist spots.</p>
+                            <p>As we grew, we carefully selected local experts to join our team, each bringing their unique regional knowledge and passion. Today, we offer experiences in every major region of Italy, from the canals of Venice to the cliffs of the Amalfi Coast, always maintaining our commitment to authenticity and quality.</p>
+                            <p>We believe travel should be transformative, not just transactional. That's why we focus on creating meaningful connections between our guests and the local culture, people, and traditions that make Italy so special.</p>
+                            <p>Our team of over 50 local experts includes chefs, sommeliers, art historians, and native guides who are deeply connected to their regions. They're not just employees - they're ambassadors of Italian culture who love sharing their knowledge and passion with visitors.</p>
+                            <p>Every itinerary we create is customized to our guests' interests, whether that's food and wine, art and history, outdoor adventures, or simply soaking in the dolce vita lifestyle. We handle all the details so you can focus on enjoying la bella vita.</p>
+                        </div>
+                        
+                        <h2>Our Mission</h2>
+                        <p>To provide authentic, immersive travel experiences that connect visitors with the heart and soul of Italy, its culture, and its people. We go beyond typical tourism to create meaningful, memorable journeys.</p>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="Gambar/Italian Village.jpg" alt="Our Team in Italy">
+                    </div>
+                </div>
+
+                <div class="team-section">
+                    <h2>Meet Our Team</h2>
+                    
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Gambar/Gambar orang.jpg" alt="Marco Bianchi">
+                            </div>
+                            <div class="member-info">
+                                <h3>Marco Bianchi</h3>
+                                <p>Founder & CEO</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Gambar/Gambar orang.jpg" alt="Sofia Ricci">
+                            </div>
+                            <div class="member-info">
+                                <h3>Sofia Ricci</h3>
+                                <p>Co-Founder</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Gambar/Gambar orang.jpg" alt="Giovanni Moretti">
+                            </div>
+                            <div class="member-info">
+                                <h3>Giovanni Moretti</h3>
+                                <p>Head of Operations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Gambar/Gambar orang.jpg" alt="Elena Romano">
+                            </div>
+                            <div class="member-info">
+                                <h3>Elena Romano</h3>
+                                <p>Tour Director</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
